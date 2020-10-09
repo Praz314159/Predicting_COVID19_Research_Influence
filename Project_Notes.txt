@@ -1,0 +1,19 @@
+
+
+
+**************************************************
+**						**
+**		PROJECT NOTES			**
+**						**
+**************************************************
+
+10/8/20: Completing coauthorship build and also thinking about feature set for paper quality. Realizing that the 
+datasets need to be cleaned. In particular, it looks like author names aren't consistently delimited by semicolons. 
+
+TASK: clean datasets   
+
+
+
+
+
+
