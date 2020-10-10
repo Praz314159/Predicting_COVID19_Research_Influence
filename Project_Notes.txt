@@ -1,6 +1,5 @@
 
 
-
 **************************************************
 **						**
 **		PROJECT NOTES			**
@@ -10,7 +9,15 @@
 10/8/20: Completing coauthorship build and also thinking about feature set for paper quality. Realizing that the 
 datasets need to be cleaned. In particular, it looks like author names aren't consistently delimited by semicolons. 
 
-TASK: clean datasets   
+TASK: clean datasets 
+
+10/9/20: Was able to automate deletion of spaces at beginning and end of author name splits. Wouldn't have to do this
+if data was cleaned properly to begin with. Annoying. Next, have to take care of delimeters.
+
+10/10/20: I have a working dictionary. However, the dictionary includes in the coauthor list the name of the author 
+(key), which means that each edge will have a self-loop. This can be taken care of later, when constructing the graph. 
+That is, all self-loops can easily be removed. Redundant edges are already automatically excluded in network 
+construction. 
 
 
 
