@@ -60,13 +60,13 @@ for coauthors in coauthor_groups:
             author_dict.update({author: author_list})
         else: #we only want the coauthors that are not already in the value --> author already in dict 
             coauthor_list = author_dict.get(author) #getting existing coauthor list for author in question 
-            candidate_coauthor_additions = coauthors.remove(author) 
-            for candidate in candidate_coauthor_additions: 
+            #candidate_coauthor_additions = author_list.remove(author) 
+            for candidate in author_list: 
                 if candidate not in coauthor_list: 
                     coauthor_list.append(candidate)
                     author_dict.update({author: coauthor_list})
             
-print(author_dict)
+print("\n\nCOAUTHOR DICTIONARY: \n\n", author_dict)
 
 
 
