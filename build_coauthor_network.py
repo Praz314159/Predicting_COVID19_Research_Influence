@@ -38,14 +38,12 @@ author_dict = {}
 
 #again, inefficient, but will suffice for now --> structured for readability 
 for coauthors in coauthor_groups: 
-    author_list = coauthors[0].split(';')
+    author_names_unclean = coauthors[0].split(';')
+    author_list = []
     #print(author_list)
-    for author in author_list:
+    for author in author_names_unclean:
         #get rid of spaces at beginning and end of author name 
-        if author[0] == " ":
-            author = author[1:] 
-        elif author[-1] == " ": 
-            author = author[0:-1]
+        author_list.append(author.strip())  
 
         '''
         print(author)
@@ -56,8 +54,10 @@ for coauthors in coauthor_groups:
         '''
 
         if author not in author_dict.keys():
-            coauthor_list = author_list.remove(author)
-            author_dict.update({author: coauthor_list})
+            print("AUTHOR LIST: ", author_list)
+            print("AUTHOR: ", author) 
+            #coauthor_list = author_list.remove(author)
+            author_dict.update({author: author_list})
         else: #we only want the coauthors that are not already in the value --> author already in dict 
             coauthor_list = author_dict.get(author) #getting existing coauthor list for author in question 
             candidate_coauthor_additions = coauthors.remove(author) 
