@@ -1,5 +1,6 @@
 This is where all the collaboration infrastructure will be housed: 
 
-Task tracking google doc: 
+Task tracking google doc: https://docs.google.com/document/d/1hGHcRvvPekH6AWmoYInfgFQCxvhOF4OGBJizZgCnZYM/edit#heading=h.xu0it8fnbyv8
+
 Progress tracking google doc: 
 
