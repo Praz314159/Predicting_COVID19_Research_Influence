@@ -5,8 +5,8 @@ This code is meant to build a coauthor network using the COVID19 paper data set 
 import pandas as pd 
 import numpy as np 
 import string 
-#import networkx 
-
+import networkx as nx
+import matplotlib.pyplot as plt 
 
 #first thing's first --> we want to read in the excel file and isolate the authors column 
 data = pd.read_excel(r'COVID19_Sample_Dataset_1.xlsx')
@@ -29,52 +29,38 @@ for coauthors in coauthor_groups:
             if char not in string.printable: 
                 coauthor_groups.remove(coauthors) 
 
-#building dictionary 
-#coauthor_list_1 = coauthor_groups[0][0] 
-#print(coauthor_list_1) 
-
 #the keys will be the authors, and the values will be coauthors --> don't need to worry about redundant edges, since networkx takes care of redundancy automatically 
 author_dict = {}  
 
-#again, inefficient, but will suffice for now --> structured for readability 
-for coauthors in coauthor_groups: 
-    author_names_unclean = coauthors[0].split(';')
-    author_list = []
-    #print(author_list)
-    for author in author_names_unclean:
-        #get rid of spaces at beginning and end of author name 
-        author_list.append(author.strip())  
+#again, inefficient, but will suffice for now --> structured for readability
+#traversing list of coauthor_groups for each paper 
+i = 0 
+for coauthor_group in coauthor_groups:
+    #for each coauthor group (1 coauthor goru <--> 1 paper), convert group to list of names   
+    coauthor_names_unclean = coauthor_group[0].split(';')
+    #for scrubbed names   
+    coauthor_group_members = []
 
-        '''
-        print(author)
-        print(type(author))
-        print(author == author_list[0])
-        print(author in author_list) 
-        #author is in the author_list, so why 
-        '''
+    for coauthor in coauthor_names_unclean:
+        #adding each scrupped coauthor name to the coauthor_group_members list 
+        coauthor_group_members.append(coauthor.strip())
+    
+    print("\n\nGROUP MEMBERS: ", coauthor_group_members)
+ 
+    coauthor_dict = {}
+    for author in coauthor_group_members:
+        coauthor_dict.update({author: {}})
 
-        if author not in author_dict.keys():
-            print("AUTHOR LIST: ", author_list)
-            print("AUTHOR: ", author) 
-            #coauthor_list = author_list.remove(author)
-            author_dict.update({author: author_list})
-        else: #we only want the coauthors that are not already in the value --> author already in dict 
-            coauthor_list = author_dict.get(author) #getting existing coauthor list for author in question 
-            #candidate_coauthor_additions = author_list.remove(author) 
-            for candidate in author_list: 
-                if candidate not in coauthor_list: 
-                    coauthor_list.append(candidate)
-                    author_dict.update({author: coauthor_list})
-            
-print("\n\nCOAUTHOR DICTIONARY: \n\n", author_dict)
+    for author in coauthor_group_members: 
+        author_dict.update({author: coauthor_dict})
+    
+    print(author_dict)
+    i += 1 
+    if i == 10: 
+        break
 
-
-
-#Network building --> we want edges between each of the coathors of a paper 
-
-
-
-
-
-
-
+coauthor_network = nx.from_dict_of_dicts(author_dict)
+nx.draw(coauthor_network, with_labels = True)
+plt.show() 
+#Note that we still have to fix semicolon delimiters
+#motherfucker, can only build nx graphs from dictionary of dictionaries 
