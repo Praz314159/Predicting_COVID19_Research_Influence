@@ -18,9 +18,11 @@ if data was cleaned properly to begin with. Annoying. Next, have to take care of
 (key), which means that each edge will have a self-loop. This can be taken care of later, when constructing the graphThat is, all self-loops can easily be removed. Redundant edges are already automatically excluded in network 
 construction.
 
-10/11:20: Now have working network generation. Had to convert to data structure used by networkx, dict of dicts. 
+10/11/20: Now have working network generation. Had to convert to data structure used by networkx, dict of dicts. 
 Next, I have to reduce node size so network structure is more apparent for plot size. Also have to do the delimiter
 scrubbing on dataset. 
+
+10/12/20: 
 
 
 
