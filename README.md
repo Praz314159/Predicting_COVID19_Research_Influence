@@ -2,7 +2,7 @@
 
 **Project Notes:** Where thoughts and progress on the project is logged by date. This way, ideas from a work session aren't lost. What bugs were fixed? What details need to be fixed in the future? Are there conceptual problems discovered that need more attention? 
 
-**build_coauthor_network.py:** Script that reads in CDC dataset and returns a coauthorship network 
+**build_coauthor_network.py:** Script that reads in CDC dataset and returns a coauthorship network. 
 
 **Reference Papers:** Where papers relevant to the project are kept. These papers will be source material for the literature review, but also will point to useful methods and tools. 
 
@@ -16,7 +16,7 @@ The CDC publishes datasets of research papers concerning COVID19. These datasets
 
 **Components and Options:** 
 
-1. *ML classifier of papers as high or low quality:* Will take as input a training set of papers and predict the quality of a new paper (good or bad). Or, papers can be automatically scored using their features. Then a regression model can be applied to predict the “quality” of a new paper. In either case, an opportunity for novelty is introduced, whereby a feature set relevant to the quality of a paper is generated after review of papers widely considered influential and papers considered low grade. A significant effort would have to be directed towards data extraction for the agreed upon feature set. A regression model could also be constructed using the citation impact of a paper to predict influence (in terms of citation impact) of a new paper.  
+1. *ML classifier of papers as high or low quality:* Will take as input a training set of papers and predict the quality of a new paper (good or bad -- alternatively, the classifier can use a simple "bag-of-words" model, which would not require a feature set). Or, papers can be automatically scored using their features. Then a regression model can be applied to predict the “quality” of a new paper. In either case, an opportunity for novelty is introduced, whereby a feature set relevant to the quality of a paper is generated after review of papers widely considered influential and papers considered low grade. A significant effort would have to be directed towards data extraction for the agreed upon feature set. A regression model could also be constructed using the citation impact of a paper to predict influence (in terms of citation impact) of a new paper.  
 
 2. *Paper coauthorship network:* Here we want to ask how the coauthorship network can be used to compliment the classifier, either through validation or application. In the case of validation, techniques already exist within the closed set of ML techniques for validation. The only prerequisite is a sufficient amount of labeled data. 
 
