@@ -16,8 +16,9 @@ The CDC publishes datasets of research papers concerning COVID19. These datasets
 
 **Components and Options:** 
 
-ML classifier of papers as high or low quality ? will take as input a training set of papers and predict the quality of a new paper (good or bad). Or, papers can be automatically scored using their features. Then a regression model can be applied to predict the “quality” of a new paper. In either case, an opportunity for novelty is introduced, whereby a feature set relevant to the quality of a paper is generated after review of papers widely considered influential and papers considered low grade. A significant effort would have to be directed towards data extraction for the agreed upon feature set. A regression model could also be constructed using the citation impact of a paper to predict influence (in terms of citation impact) of a new paper.  
-Paper coauthorship network ? here we want to ask how the coauthorship network can be used to compliment the classifier, either through validation or application. In the case of validation, techniques already exist within the closed set of ML techniques for validation. The only prerequisite is a sufficient amount of labeled data. 
+1. *ML classifier of papers as high or low quality:* Will take as input a training set of papers and predict the quality of a new paper (good or bad). Or, papers can be automatically scored using their features. Then a regression model can be applied to predict the “quality” of a new paper. In either case, an opportunity for novelty is introduced, whereby a feature set relevant to the quality of a paper is generated after review of papers widely considered influential and papers considered low grade. A significant effort would have to be directed towards data extraction for the agreed upon feature set. A regression model could also be constructed using the citation impact of a paper to predict influence (in terms of citation impact) of a new paper.  
+
+2. *Paper coauthorship network:* Here we want to ask how the coauthorship network can be used to compliment the classifier, either through validation or application. In the case of validation, techniques already exist within the closed set of ML techniques for validation. The only prerequisite is a sufficient amount of labeled data. 
 
 **The need for a novel method for classifying paper quality:** 
 
