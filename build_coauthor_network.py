@@ -34,7 +34,7 @@ author_dict = {}
 
 #again, inefficient, but will suffice for now --> structured for readability
 #traversing list of coauthor_groups for each paper 
-#i = 0 
+i = 0 
 for coauthor_group in coauthor_groups:
     #for each coauthor group (1 coauthor goru <--> 1 paper), convert group to list of names   
     coauthor_names_unclean = coauthor_group[0].split(';')
@@ -51,13 +51,24 @@ for coauthor_group in coauthor_groups:
     for author in coauthor_group_members:
         coauthor_dict.update({author: {}})
 
-    for author in coauthor_group_members: 
-        author_dict.update({author: coauthor_dict})
+    #The problem here is that only cliques will be retained. The logic is more subtle. If an author isn't yet a key, 
+    #then we want to add it to the dictionary. If it is already a key, then we just want to update it's dictionary with the 
+    #neighbors it doesn't already have in its dictionary. 
+    for main_author in coauthor_group_members:
+        if main_author not in author_dict.keys(): 
+            author_dict.update({main_author: coauthor_dict})
+        else: 
+            #if the author is already a key in the author_dict that means that it presumably already has a coauthor dictionary as 
+            #its value. More specifically, it is already a part of a clique. Here is where we build edges between cliques
+            print("CONNECTOR FOUND: ", main_author)
+            for coauthor in coauthor_group_members:
+                author_dict.get(main_author).update({coauthor: {}}) #getting the existing coauthor_dict and adding edges to authors in current coauthor list 
+
     
     #print(author_dict)
-    #i += 1 
-    #if i == 25: 
-    #    break
+    i += 1 
+    if i == 200: 
+        break
 
 coauthor_network = nx.from_dict_of_dicts(author_dict)
 nx.draw(coauthor_network, node_size = 50)
