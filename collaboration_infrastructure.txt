@@ -1,6 +1,6 @@
 This is where all the collaboration infrastructure will be housed: 
 
 Task tracking google doc: https://docs.google.com/document/d/1hGHcRvvPekH6AWmoYInfgFQCxvhOF4OGBJizZgCnZYM/edit#heading=h.xu0it8fnbyv8
-
+Project Proposal doc: https://docs.google.com/document/d/1CyxbkVB1rc15mVLS3bupeMt1SkHf1U5sPU5VxGJyItQ/edit?ts=5fadccc6
 Progress tracking google doc: 
 

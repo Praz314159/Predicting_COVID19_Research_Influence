@@ -71,7 +71,7 @@ for coauthor_group in coauthor_groups:
         break
 
 coauthor_network = nx.from_dict_of_dicts(author_dict)
-nx.draw(coauthor_network, node_size = 50)
+nx.draw(coauthor_network, with_labels = True, node_size = 50)
 plt.show() 
 #Note that we still have to fix semicolon delimiters
 #motherfucker, can only build nx graphs from dictionary of dictionaries 
