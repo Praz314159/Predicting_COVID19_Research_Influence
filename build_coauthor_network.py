@@ -9,8 +9,9 @@ import networkx as nx
 import matplotlib.pyplot as plt 
 
 #first thing's first --> we want to read in the excel file and isolate the authors column 
-data = pd.read_excel(r'COVID19_Sample_Dataset_1.xlsx')
-df = pd.DataFrame(data, columns = ['Author'])
+data = pd.read_csv(r'COVID19_Subset_Dataset.csv')
+df = pd.DataFrame(data, columns = ['authors'])
+df.dropna(inplace = True)
 
 #data cleaning --> should we clean as we go? Build author dictionary --> [[P1author_1, P1author_2][P2author_1, ...][ ]]
 coauthor_groups = df.values.tolist() 
@@ -34,6 +35,8 @@ author_dict = {}
 
 #again, inefficient, but will suffice for now --> structured for readability
 #traversing list of coauthor_groups for each paper 
+
+
 i = 0 
 for coauthor_group in coauthor_groups:
     #for each coauthor group (1 coauthor goru <--> 1 paper), convert group to list of names   
@@ -66,12 +69,22 @@ for coauthor_group in coauthor_groups:
 
     
     #print(author_dict)
+    
     i += 1 
-    if i == 200: 
+    if i == 1000: 
         break
-
+'''
+#some plots
 coauthor_network = nx.from_dict_of_dicts(author_dict)
-nx.draw(coauthor_network, with_labels = True, node_size = 50)
-plt.show() 
+load_centrality = nx.load_centrality(coauthor_network)
+load_centrality_scores = load_centrality.values() 
+plt.hist(load_centrality_scores, 200)
+plt.show()
+ 
+'''
+coauthor_network = nx.from_dict_of_dicts(author_dict)
+degree = dict(coauthor_network.degree)
+nx.draw(coauthor_network, node_size = [v for v in degree.values()])
+plt.show()
 #Note that we still have to fix semicolon delimiters
 #motherfucker, can only build nx graphs from dictionary of dictionaries 
